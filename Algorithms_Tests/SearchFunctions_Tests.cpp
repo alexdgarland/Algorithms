@@ -17,11 +17,18 @@ namespace Algorithms_Tests
             Assert::AreEqual(4, searchResultIndex);
         }
 
-        TEST_METHOD(Test_BinarySearch)
+        TEST_METHOD(Test_BinarySearch_7Items)
         {
             int arrayToSearch[] = { 1, 2, 3, 4, 5, 6, 7 };
             int searchResultIndex = BinarySearch(arrayToSearch, 7, 5);
             Assert::AreEqual(4, searchResultIndex);
+        }
+
+        TEST_METHOD(Test_BinarySearch_1Item)
+        {
+            int arrayToSearch[] = { 5 };
+            int searchResultIndex = BinarySearch(arrayToSearch, 1, 5);
+            Assert::AreEqual(0, searchResultIndex);
         }
 
     };

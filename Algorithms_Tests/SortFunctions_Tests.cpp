@@ -6,24 +6,27 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace SortingAlgorithms_Tests
 {        
-    /*
-    In each test of a sorting algorithm, the functional correctness of the algo will be tested by passing it
-    a standard unsorted array of integers (a value copy so can be altered in-place), and comparing the sorted
-    output to expected results...
-    */
-    const static int masterTestArray[] = { 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682 };
-    const static int expectedArray[] = { 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976 };
-
-    static int* GetCopyOfTestArrayToSort()
-    {
-        int* array = (int*)malloc(10*sizeof(int));
-        int i;
-        for(i=0;i<10;i++) { array[i] = masterTestArray[i]; }
-        return array;
-    }
 
     TEST_CLASS(ImplementationFunctions_Tests)
     {
+
+    private:
+
+        void standardTest_SortAlgorithm(void* SortFunctionPtr)
+        {
+            int i;
+            int testArray[] = { 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682 };
+            int expectedArray[] = { 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976 };
+            int*(*SortFunction)(int*, int) = (int*(*)(int*, int))(SortFunctionPtr);
+            
+            SortFunction(testArray, 10);
+            
+            for (i = 0; i < 10 ; i++)
+            {
+                Assert::AreEqual(expectedArray[i], testArray[i]);
+            }
+        }
+
     public:
     
         TEST_METHOD(Test_SwapArrayElements)
@@ -37,38 +40,17 @@ namespace SortingAlgorithms_Tests
 
         TEST_METHOD(Test_InsertionSort)
         {
-            int* testArray = GetCopyOfTestArrayToSort();
-            InsertionSort(testArray, 10);
-            int i;
-            for (i = 0; i < 10 ; i++)
-            {
-                Assert::AreEqual(expectedArray[i], testArray[i]);
-            }
-            free(testArray);
+            this->standardTest_SortAlgorithm(&InsertionSort);
         }
 
         TEST_METHOD(Test_SelectionSort)
         {
-            int* testArray = GetCopyOfTestArrayToSort();
-            SelectionSort(testArray, 10);
-            int i;
-            for (i = 0; i < 10 ; i++)
-            {
-                Assert::AreEqual(expectedArray[i], testArray[i]);
-            }
-            free(testArray);
+            this->standardTest_SortAlgorithm(&SelectionSort);
         }
 
         TEST_METHOD(Test_MergeSort)
         {
-            int* testArray = GetCopyOfTestArrayToSort();
-            MergeSort(testArray, 10);
-            int i;
-            for (i = 0; i < 10 ; i++)
-            {
-                Assert::AreEqual(expectedArray[i], testArray[i]);
-            }
-            free(testArray);
+            this->standardTest_SortAlgorithm(&MergeSort);
         }
 
         TEST_METHOD(Test_FindIndexOfSmallestElement)
