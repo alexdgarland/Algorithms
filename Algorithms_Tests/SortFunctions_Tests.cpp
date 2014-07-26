@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "..\SortingAlgorithms\ImplementationFunctions.h"
+#include "..\Algorithms\SortFunctions.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

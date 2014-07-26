@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <stdlib.h>
-#include "ImplementationFunctions.h"
+#include "SortFunctions.h"
 
  int* InsertionSort(int* ArrayToSort, int ArraySize)
 {

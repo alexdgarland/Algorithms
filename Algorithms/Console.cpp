@@ -6,7 +6,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ImplementationFunctions.h"
+#include "SortFunctions.h"
 
 #define ARRAYSIZE 10
 
