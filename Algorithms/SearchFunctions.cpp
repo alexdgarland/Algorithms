@@ -29,7 +29,7 @@ int BinarySearch(const int* SortedArrayToSearch, const int Length, const int Ite
     }
     else /* Implicitly ...  midPointValue < ItemToFind */
     {
-        return BinarySearch(&(SortedArrayToSearch[midPoint+1]), Length - (midPoint+1), ItemToFind) + (midPoint+1);
+        int recursiveResult = BinarySearch(&(SortedArrayToSearch[midPoint+1]), Length - (midPoint+1), ItemToFind);
+        return  (recursiveResult < 0) ? recursiveResult : (recursiveResult + midPoint + 1);
     }
-
 }
