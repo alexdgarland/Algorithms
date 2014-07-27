@@ -34,6 +34,23 @@ int* SelectionSort(int* ArrayToSort, int ArraySize)
     return ArrayToSort;
 };
 
+int* BubbleSort(int* ArrayToSort, int ArraySize)
+{
+    int i, j;
+
+    for(i=0; i<(ArraySize-1); i++)
+    {
+        for(j=(ArraySize-1); j>i; j--)
+        {
+            if(ArrayToSort[j] < ArrayToSort[j-1])
+            {
+                SwapArrayElements(ArrayToSort, j, j-1);
+            }
+        }
+    }
+    return ArrayToSort;
+}
+
 int* MergeSort(int* ArrayToSort, int ArraySize)
 {
     if (ArraySize > 1)  // If ArraySize is 1, do nothing... single element cannot be out of order

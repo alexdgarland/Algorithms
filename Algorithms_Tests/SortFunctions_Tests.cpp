@@ -48,6 +48,11 @@ namespace SortingAlgorithms_Tests
             this->standardTest_SortAlgorithm(&SelectionSort);
         }
 
+        TEST_METHOD(Test_BubbleSort)
+        {
+            this->standardTest_SortAlgorithm(&BubbleSort);
+        }
+
         TEST_METHOD(Test_MergeSort)
         {
             this->standardTest_SortAlgorithm(&MergeSort);
