@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Cormen et al "Introduction to Algorithms"</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+
+<body>
+
+<p><b><font size=6>Cormen et al - Introduction To Algorithms</font><br/><br/><font size=5>Problem 3-1 "Asymptotic Behaviour of Polynomials"</font><br/><br/></b></p>
+
+<p>Let p(n) =<br/><br/>d<br/><font size=28>&#425;</font> a<sub>i</sub>n<sup>i</sup><br/>i=0
+<br/><br/>where a<sub>d</sub> > 0, be a degree-d polynomial in n, and let k be a constant.
+Use the definitions of the asymptotic notations to prove the following properties (see items a-e below).</p>
+
+<i>
+<p><b>General Notes</b></p>
+<table><tr><td width=1000>
+For all of the following, we can say:
+<ol><li>d is the highest power that n can be raised to.</li>
+<li>a<sub>d</sub> is stated to be non-zero, so we know that the growth of n<sup>d</sup> will not be rendered irrelevant by being multiplied by zero.</li>
+<li>Given the standard approach to evaluating run-times, we know that as we grow (particularly when tending towards infinity), the components of p(n) which are a<sub>i</sub>n<sup>i</sup> for i < d will not be significant - only the highest power of n drives the long-term growth trend in a meaningful way.
+<br/>Tending to infinity, a<sub>i-1</sub>n<sup>i-1</sup> / a<sub>i</sub>n<sup>i</sup> tends to zero.</li>
+<li>Therefore, we are basically simplifying p(n) to n<sup>d</sup> for purposes of comparison with n<sup>k</sup>.</li>
+<li>Further to point 3 (etc.), we can say that the size of the highest power to which n is raised directly correlates to the expected order of growth over the long-term.</li>
+</ol></td></tr></table>
+</i>
+
+<table border="1">
+<tr>
+<td width=200>a.    if k >= d, then p(n) = O(n<sup>k</sup>)</td>
+<td width=800>By definition, big-O means that the expression p(n) will perform at worst in the order of n<sup>k</sup>.<br/>
+Also by definition, big-O does not make any statement about whether or not p(n) may perform better than this.
+<br/>Given the above general points, we can say this is equivalent to knowing that k must be at least equal to d (so it provides a loose statement of a reliable worst case) but may also be greater.</td>
+</tr>
+<tr>
+<td width=200>b.    If k <= d, then p(n) = &#937;(n<sup>k</sup>)</td>
+<td width=800>By definition, big-&#937; means that the expression p(n) will perform at best in the order of n<sup>k</sup>.
+<br/>Also by definition, big-&#937; does not make any statement about whether or not p(n) may perform worse than this.
+<br/>Given the above general points, we can say this is equivalent to knowing that k must be at most equal to d (so it provides a loose statement of a reliable best case) but may also be less.</td>
+</tr>
+<tr>
+<td width=200>c.    If k = d, then p(n) = &#1256;(n<sup>k</sup>)</td>
+<td width=800>By definition, big-&#1256; means that the expression p(n) is tightly bounded by n<sup>k</sup> (it is within a constant factor of n<sup>k</sup> for both best and worst case) and cannot perform notably better or worse in terms of growth trend.
+<br/>This is equivalent to saying that k must be equal to d, as if it were larger or smaller the order of growth would only be in O (allowing for meaningfully better performance than n<sup>k</sup>) or &#937; (allowing worse performance than n<sup>k</sup>), not &#1256;.</td>
+</tr>
+<tr>
+<td width=200>d.    If k > d, then p(n) = o(nk)</td>
+<td width=800>Small-o notation requires that big-O be met, and then additionally states that n<sup>k</sup> is a <b>weak</b> upper bound - i.e. that the sequences diverge (specifically that the ratio n<sup>d</sup> / n<sup>k</sup> tends to zero).
+<br/>This additional stipulation is equivalent to stating that n<sup>d</sup> cannot actually be equivalent to n<sup>k</sup>, i.e. k!= d.
+<br/>So we are left with the fact that k must be greater than d, satisfying the tendency of the mentioned ratio to zero.</td>
+</tr>
+<tr>
+<td width=200>e.    If k < d, then p(n) = &#969;(n<sup>k</sup>)</td>
+<td width=800>Small-&#969; notation requires that big-&#937; be met, and then additionally states that n<sup>k</sup> is a <b>weak</b> lower bound - i.e. that the sequences diverge (specificaly that the ratio n<sup>k</sup> / n<sup>d</sup> tends to zero).
+<br/>This additional stipulation is equivalent to stating that n<sup>d</sup> cannot actually be equivalent to n<sup>k</sup>, i.e. k!= d.
+<br/>So we are left with the fact that k must be less than d, satisfying the tendency of the mentioned ratio to zero.</td>
+</tr>
+</table>
+<br/>
+
+</body>
+</html>
