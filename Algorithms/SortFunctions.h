@@ -1,6 +1,5 @@
-#ifndef ImplementationFunctions_INCLUDED
-
-#define ImplementationFunctions_INCLUDED
+#include "stdafx.h"
+#pragma once
 
 /* Main sort functions */
 int* InsertionSort(int* ArrayToSort, int ArraySize);
@@ -11,5 +10,3 @@ int* MergeSort(int* ArrayToSort, int ArraySize);
 int FindIndexOfSmallestElement(const int* Array, const int StartIndex, const int EndIndex);
 int* SwapArrayElements(int* ArrayToChange, int ElemIndex1, int ElemIndex2);
 int* MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint);
-
-#endif /* ImplementationFunctions_INCLUDED */
