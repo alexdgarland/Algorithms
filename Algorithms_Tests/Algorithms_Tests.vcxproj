@@ -83,14 +83,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Algorithms\MaximumSubarray.h" />
     <ClInclude Include="..\Algorithms\SearchFunctions.h" />
     <ClInclude Include="..\SortingAlgorithms\SortFunctions.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Algorithms\MaximumSubarray.cpp" />
     <ClCompile Include="..\Algorithms\SearchFunctions.cpp" />
     <ClCompile Include="..\Algorithms\SortFunctions.cpp" />
+    <ClCompile Include="MaximumSubarray_Tests.cpp" />
     <ClCompile Include="SearchFunctions_Tests.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

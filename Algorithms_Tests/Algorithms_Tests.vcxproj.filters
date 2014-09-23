@@ -27,6 +27,9 @@
     <ClInclude Include="..\Algorithms\SearchFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Algorithms\MaximumSubarray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Algorithms\SearchFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MaximumSubarray_Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\MaximumSubarray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
