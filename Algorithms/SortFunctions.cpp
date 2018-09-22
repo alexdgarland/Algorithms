@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <stdlib.h>
 #include "SortFunctions.h"
 
@@ -48,7 +47,6 @@ int* BubbleSort(int* ArrayToSort, int ArraySize)
     }
     return ArrayToSort;
 }
-
 
 int FindIndexOfSmallestElement(const int* Array, const int StartIndex, const int EndIndex)
 {

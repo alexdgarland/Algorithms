@@ -39,11 +39,41 @@
     <ClInclude Include="..\Algorithms\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Algorithms\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SortFunctions_Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -68,19 +98,34 @@
     <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Algorithms\MaximumSubarray.cpp">
+    <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Algorithms\MergeSort.cpp">
+    <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Algorithms\SearchFunctions.cpp">
+    <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Algorithms\SortFunctions.cpp">
+    <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Algorithms\stdafx.cpp">
+    <ClCompile Include="..\Algorithms\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\*.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Algorithms\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

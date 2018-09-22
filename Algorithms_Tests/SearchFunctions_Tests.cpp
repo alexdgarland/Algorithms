@@ -4,10 +4,12 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace Algorithms_Tests
+namespace SearchAlgorithms_Tests
 {
+
     TEST_CLASS(SearchFunctions_Tests)
     {
+
     public:
         
         TEST_METHOD(Test_LinearSearch)
@@ -45,6 +47,6 @@ namespace Algorithms_Tests
             Assert::AreEqual(-1, searchResultIndex);
         }
 
-
     };
+
 }

@@ -1,6 +1,4 @@
-#include "stdafx.h"
 #include <stdlib.h>
-#include "SortFunctions.h"
 #include "MergeSort.h"
 
 int* MergeSort(int* ArrayToSort, int ArraySize)
@@ -43,7 +41,8 @@ int* MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint)
         // Bounds-checking on arrays is slightly more complex than using "sentinel" value as per Cormen et al,
         // but safer/ more correct in practice - ensures we can handle full range of integer values.
         if (
-            rightIndex >= rightSectionSize ||
+            rightIndex >= rightSectionSize
+                ||
                 (
                     leftIndex < SplitPoint
                     &&

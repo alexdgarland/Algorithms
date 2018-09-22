@@ -4,10 +4,12 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace Algorithms_Tests
+namespace SearchAlgorithms_Tests
 {
+
     TEST_CLASS(MaximumSubarray_Tests)
     {
+
     public:
         
         TEST_METHOD(Test_FindMaxCrossingSubarray)

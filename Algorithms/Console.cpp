@@ -1,15 +1,13 @@
-// SortingAlgorithms.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <tchar.h>
+#include <time.h>
+
 #include "SortFunctions.h"
 #include "MergeSort.h"
 
-#define ARRAYSIZE 10
+constexpr auto ARRAYSIZE = 10;
 
 int* GetRandomArray(int ArraySize);
 int PrintArray(int* ArrayToPrint);

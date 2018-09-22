@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "MaximumSubarray.h"
 #include <cstdlib>
 

@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "SearchFunctions.h"
 
 int LinearSearch(const int* ArrayToSearch, const int Length, const int ItemToFind)
