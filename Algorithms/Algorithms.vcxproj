@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MaximumSubarray.h" />
+    <ClInclude Include="MergeSort.h" />
     <ClInclude Include="SearchFunctions.h" />
     <ClInclude Include="SortFunctions.h" />
     <ClInclude Include="stdafx.h" />
@@ -90,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="MaximumSubarray.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="SearchFunctions.cpp" />
     <ClCompile Include="SortFunctions.cpp" />
     <ClCompile Include="stdafx.cpp">

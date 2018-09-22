@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "SortFunctions.h"
+#include "MergeSort.h"
 
 #define ARRAYSIZE 10
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\Algorithms\SortFunctions.h"
+#include "..\Algorithms\MergeSort.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -76,5 +77,7 @@ namespace SortingAlgorithms_Tests
                 Assert::AreEqual(expectedArray[i], testArray[i]);
             }
         }
+
     };
+
 }
