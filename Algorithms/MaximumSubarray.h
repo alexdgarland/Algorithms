@@ -13,5 +13,3 @@ typedef struct SubArray
 SubArray FindMaxCrossingSubarray(int A[], ArrayIndex low, ArrayIndex mid, ArrayIndex high);
 
 int* ConvertPricesToDeltas(int* prices, int length);
-
-

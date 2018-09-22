@@ -4,15 +4,13 @@
 
  int* InsertionSort(int* ArrayToSort, int ArraySize)
 {
-    int outerIndex, innerIndex;
+    int i, j;
     
-    for (outerIndex = 1; outerIndex < ArraySize; outerIndex++)
+    for (i = 1; i < ArraySize; i++)
     {
-        for(innerIndex = outerIndex;
-            innerIndex > 0 && ArrayToSort[innerIndex] < ArrayToSort[innerIndex-1];
-            innerIndex--)
+        for(j = i; j > 0 && ArrayToSort[j] < ArrayToSort[j-1]; j--)
         {
-            SwapArrayElements(ArrayToSort, innerIndex, innerIndex-1);
+            SwapArrayElements(ArrayToSort, j, j-1);
         }
     }
 
