@@ -9,6 +9,15 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 namespace SortingAlgorithms_Tests
 {
 
+    void assertSameIntArrays(int* expected, int* actual, int ArraySize) {
+
+        int i;
+        for (i = 0; i < ArraySize; i++)
+        {
+            Assert::AreEqual(expected[i], actual[i]);
+        }
+
+    }
 
     TEST_CLASS(SortImplementation_Tests)
     {
@@ -24,11 +33,7 @@ namespace SortingAlgorithms_Tests
 
             SortFunction(testArray, 10);
 
-            int i;
-            for (i = 0; i < 10; i++)
-            {
-                Assert::AreEqual(expectedArray[i], testArray[i]);
-            }
+            assertSameIntArrays(expectedArray, testArray, 10);
         }
 
     public:
@@ -92,21 +97,86 @@ namespace SortingAlgorithms_Tests
 
             MergeSortedSections(testArray, 6, 3);
 
-            int i;
-            for (i = 0; i < 6; i++)
-            {
-                Assert::AreEqual(expectedArray[i], testArray[i]);
-            }
+            assertSameIntArrays(expectedArray, testArray, 6);
         }
 
-        TEST_METHOD(Test_MaxHeapify)
+        TEST_METHOD(Test_MaxHeapifySubtree)
         {
-            Assert::AreEqual("", "*", "This test is not implemented");
+            int testArray[] = { 1, 3, 5, 2, 4, 6 };
+            /*
+                                    1
+             Act here >>>   3               5
+                        2       4       6
+
+             
+             Sorts only the left subtree (the child nodes are leaves so already satisfy the max-heap property).
+
+             Expected result:
+
+                                    1
+                            4               5
+                        2       3       6
+            */
+            int expectedArray[] = { 1, 4, 5, 2, 3, 6 };
+
+            MaxHeapify(testArray, 1, 6);
+            
+            assertSameIntArrays(expectedArray, testArray, 6);
+        
+        }
+
+        TEST_METHOD(Test_MaxHeapifyFullTree)
+        {
+            int testArray[] = { 1, 4, 5, 2, 6, 3, 0};
+            /*
+                                    1
+                            4               5
+                        2       6       3       0
+
+
+            The right subtree should end up fully sorted and maintain its max-heap property.
+            The left subtree does not satisfy the max-heap property,
+            but by design the algorithm assumes it does and does not fix.
+
+            Expected result:
+
+                                    5
+                            4               3
+                        2       6       1       0
+
+            */
+            int expectedArray[] = { 5, 4, 3, 2, 6, 1, 0 };
+
+            MaxHeapify(testArray, 0, 7);
+
+            assertSameIntArrays(expectedArray, testArray, 7);
+        
         }
 
         TEST_METHOD(Test_BuildMaxHeap)
         {
-            Assert::AreEqual("", "*", "This test is not implemented");
+            int testArray[] = { 1, 4, 5, 2, 6, 3, 0 };
+            /*
+                                    1
+                            4               5
+                        2       6       3       0
+
+
+            This should get fully built into a max heap.
+
+            Expected result:
+
+                                    6
+                            4               5
+                        2       1       3       0
+
+            */
+            int expectedArray[] = { 6, 4, 5, 2, 1, 3, 0 };
+
+            BuildMaxHeap(testArray, 7);
+
+            assertSameIntArrays(expectedArray, testArray, 7);
+
         }
 
     };
