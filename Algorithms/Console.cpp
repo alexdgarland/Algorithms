@@ -3,38 +3,17 @@
 #include <string.h>
 #include <tchar.h>
 #include <time.h>
+#include <vector>
 
 #include "SortFunctions.h"
 #include "MergeSort.h"
+#include "HeapSort.h"
 
 constexpr auto ARRAYSIZE = 10;
 
 int* GetRandomArray(int ArraySize);
-int PrintArray(int* ArrayToPrint);
-int DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName);
-
-int _tmain(int argc, _TCHAR* argv[])
-{
-    DemonstrateAlgorithm(&InsertionSort, "Insertion Sort");
-    DemonstrateAlgorithm(&SelectionSort, "Selection Sort");
-    DemonstrateAlgorithm(&MergeSort, "Merge Sort");
-}
-
-int DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName)
-{
-    int* myarray = GetRandomArray(ARRAYSIZE);
-    int* (*currentSortFunction)(int*,int) = (int*(*)(int*,int))(ImplementationFunction);
-
-    printf("\nDemonstrating sorting algorithm - %s.\n", AlgorithmName);
-    printf("\nShowing random array before sorting:\n");
-    PrintArray(myarray);
-    currentSortFunction(myarray, ARRAYSIZE);
-    printf("\nShowing array after sorting:\n");
-    PrintArray(myarray);
-    
-    free(myarray);
-    return 0;
-};
+void PrintArray(int* ArrayToPrint, const char* Message);
+void DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName);
 
 int* GetRandomArray(int ArraySize)
 {
@@ -45,10 +24,35 @@ int* GetRandomArray(int ArraySize)
     return array;
 }
 
-int PrintArray(int* ArrayToPrint)
+void PrintArray(int* ArrayToPrint, const char* Description)
 {
+    printf("\nShowing %s:\n", Description);
+
     int i;
-    for (i = 0; i < ARRAYSIZE; i++) { printf("%d ", ArrayToPrint[i]); }
+    for (i = 0; i < ARRAYSIZE; i++) {
+        printf("%d ", ArrayToPrint[i]);
+    }
     printf("\n");
-    return 0;
+}
+
+void DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName)
+{
+    int* array = GetRandomArray(ARRAYSIZE);
+    int* (*currentSortFunction)(int*, int) = (int*(*)(int*, int))(ImplementationFunction);
+
+    printf("\n**** Demonstrating sorting algorithm - %s ****\n", AlgorithmName);
+    PrintArray(array, "random array before sorting");
+    currentSortFunction(array, ARRAYSIZE);
+    PrintArray(array, "array after sorting");
+    printf("\n");
+
+    free(array);
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+    DemonstrateAlgorithm(&InsertionSort, "Insertion Sort");
+    DemonstrateAlgorithm(&SelectionSort, "Selection Sort");
+    DemonstrateAlgorithm(&MergeSort, "Merge Sort");
+    DemonstrateAlgorithm(&HeapSort, "Heap Sort");
 }
