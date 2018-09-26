@@ -81,6 +81,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BubbleSort.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="MaximumSubarray.h" />
     <ClInclude Include="MergeSort.h" />

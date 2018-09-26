@@ -1,11 +1,9 @@
-#include "stdafx.h"
 #include "CppUnitTest.h"
 #include <vector>
 #include <boost/assign/std/vector.hpp>
-// TODO - currently using a manual install of Boost - should maybe look at e.g. https://github.com/Microsoft/vcpkg
-// TODO - could also switch over to Boost unit tests?
 
 #include "..\Algorithms\SortFunctions.h"
+#include "..\Algorithms\BubbleSort.h"
 #include "..\Algorithms\MergeSort.h"
 #include "..\Algorithms\HeapSort.h"
 
@@ -36,7 +34,7 @@ namespace SortingAlgorithms_Tests
 
     private:
 
-        void standardSortTest(void* SortFunctionPtr)
+        void standardSortTest(VectorSorter& sort)
         {
             std::vector<int> testVector;
             testVector += 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682;
@@ -44,9 +42,7 @@ namespace SortingAlgorithms_Tests
             std::vector<int> expectedVector;
             expectedVector += 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976;
             
-            std::vector<int>(*SortFunction)(std::vector<int>) = (std::vector<int>(*)(std::vector<int>))(SortFunctionPtr);
-
-            SortFunction(testVector);
+            sort(testVector);
 
             assertSameIntVectors(expectedVector, testVector);
         }
@@ -55,49 +51,28 @@ namespace SortingAlgorithms_Tests
 
         TEST_METHOD(Test_InsertionSort)
         {
-            this->standardSortTest(&InsertionSort);
+            //this->standardSortTest(&InsertionSort);
         }
 
         TEST_METHOD(Test_SelectionSort)
         {
-            this->standardSortTest(&SelectionSort);
+            //this->standardSortTest(&SelectionSort);
         }
-
-        // TODO - generalise from this sorter class to something that can be passed cleanly into standard sort test
-        // TODO - see https://stackoverflow.com/questions/9756893/how-to-implement-interfaces-in-c
-        class BubbleSorter {
-
-        public:
-            void operator()(std::vector<int>& Data) {
-                BubbleSort(Data);
-            }
-
-        };
 
         TEST_METHOD(Test_BubbleSort)
         {
-            //this->standardSortTest(&BubbleSort);
-
-            std::vector<int> testVector;
-            testVector += 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682;
-
-            std::vector<int> expectedVector;
-            expectedVector += 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976;
-            BubbleSorter sort;
-            sort(testVector);
-
-            assertSameIntVectors(expectedVector, testVector);
-
+			BubbleSorter bubbleSort;
+            this->standardSortTest(bubbleSort);
         }
 
         TEST_METHOD(Test_MergeSort)
         {
-            this->standardSortTest(&MergeSort);
+            //this->standardSortTest(&MergeSort);
         }
 
         TEST_METHOD(Test_HeapSort)
         {
-            this->standardSortTest(&HeapSort);
+            //this->standardSortTest(&HeapSort);
         }
 
     };
