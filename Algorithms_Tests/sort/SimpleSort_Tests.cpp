@@ -16,7 +16,7 @@ namespace SortingAlgorithms_Tests
 
         TEST_METHOD(Test_BubbleSort)
         {
-			BubbleSorter bubbleSort;
+            BubbleSorter bubbleSort;
             standardSortTest(bubbleSort);
         }
 

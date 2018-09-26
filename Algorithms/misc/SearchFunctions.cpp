@@ -9,17 +9,17 @@ int LinearSearch(const int* ArrayToSearch, const int Length, const int ItemToFin
     }
     return -1;
 }
- 
+
 int BinarySearch(const int* SortedArrayToSearch, const int Length, const int ItemToFind)
 {
     int midPoint, midPointValue;
-    
-    if(Length == 1) { return SortedArrayToSearch[0] == ItemToFind ? 0 : -1; }
+
+    if (Length == 1) { return SortedArrayToSearch[0] == ItemToFind ? 0 : -1; }
 
     midPoint = Length / 2;
     midPointValue = SortedArrayToSearch[midPoint];
 
-    if(midPointValue == ItemToFind)
+    if (midPointValue == ItemToFind)
     {
         return midPoint;
     }
@@ -29,7 +29,7 @@ int BinarySearch(const int* SortedArrayToSearch, const int Length, const int Ite
     }
     else /* Implicitly ...  midPointValue < ItemToFind */
     {
-        int recursiveResult = BinarySearch(&(SortedArrayToSearch[midPoint+1]), Length - (midPoint+1), ItemToFind);
+        int recursiveResult = BinarySearch(&(SortedArrayToSearch[midPoint + 1]), Length - (midPoint + 1), ItemToFind);
         return  (recursiveResult < 0) ? recursiveResult : (recursiveResult + midPoint + 1);
     }
 }

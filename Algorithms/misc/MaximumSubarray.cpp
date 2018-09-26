@@ -26,7 +26,7 @@ SubArray FindMaxCrossingSubarray(int A[], ArrayIndex low, ArrayIndex mid, ArrayI
 
     for (j = mid + 1; j <= high; j++)
     {
-        sumTracker+= A[j];
+        sumTracker += A[j];
         if (sumTracker > rightSum || !rightSumInitialised)
         {
             rightSumInitialised = true;
@@ -41,10 +41,10 @@ SubArray FindMaxCrossingSubarray(int A[], ArrayIndex low, ArrayIndex mid, ArrayI
 
 int* ConvertPricesToDeltas(int* prices, int length)
 {
-    int* deltas = (int*)malloc(sizeof(int) * (length-1));
-    for(int i = 0; i < (length-1); i++)
+    int* deltas = (int*)malloc(sizeof(int) * (length - 1));
+    for (int i = 0; i < (length - 1); i++)
     {
-        deltas[i] = prices[i+1] - prices[i];
+        deltas[i] = prices[i + 1] - prices[i];
     }
     return deltas;
 }

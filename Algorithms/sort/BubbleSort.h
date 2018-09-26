@@ -10,21 +10,21 @@ public:
         return "Bubble Sort";
     }
 
-	void operator()(vector<int>& Data) {
+    void operator()(vector<int>& Data) {
 
-		int i, j;
+        int i, j;
 
-		for (i = 0; i < (Data.size() - 1); i++)
-		{
-			for (j = (Data.size() - 1); j > i; j--)
-			{
-				if (Data[j] < Data[j - 1])
-				{
-					swap(Data[j], Data[j - 1]);
-				}
-			}
-		}
+        for (i = 0; i < (Data.size() - 1); i++)
+        {
+            for (j = (Data.size() - 1); j > i; j--)
+            {
+                if (Data[j] < Data[j - 1])
+                {
+                    swap(Data[j], Data[j - 1]);
+                }
+            }
+        }
 
-	}
+    }
 
 };

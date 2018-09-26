@@ -10,7 +10,7 @@ namespace SearchAlgorithms_Tests
     {
 
     public:
-        
+
         TEST_METHOD(Test_FindMaxCrossingSubarray)
         {
             int arrayToSearch[] = { 10, 12, -15, -15, 5, 6, 7, -1, -1, -1, -1 };
@@ -29,7 +29,7 @@ namespace SearchAlgorithms_Tests
 
             int* resultDeltas = ConvertPricesToDeltas(prices, 17);
 
-            for(int i = 0; i < 16; i++)
+            for (int i = 0; i < 16; i++)
             {
                 Assert::AreEqual(expectedDeltas[i], resultDeltas[i]);
             }

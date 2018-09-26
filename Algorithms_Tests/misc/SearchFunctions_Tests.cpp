@@ -10,7 +10,7 @@ namespace SearchAlgorithms_Tests
     {
 
     public:
-        
+
         TEST_METHOD(Test_LinearSearch)
         {
             int arrayToSearch[] = { 1, 2, 3, 4, 5, 6, 7 };
