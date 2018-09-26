@@ -125,7 +125,7 @@ namespace SortingAlgorithms_Tests
             std::vector<int> testVector;
             testVector += 1, 4, 3, 4, 5, 1;
 
-            int indexOfSmallest = FindIndexOfSmallestElement(testVector, 1);
+            int indexOfSmallest = FindIndexOfSmallestElement(testVector, 1, 4);
 
             Assert::AreEqual(2, indexOfSmallest);
         }

@@ -1,7 +1,7 @@
 #pragma once
 
 /* Helper functions */
-int FindIndexOfSmallestElement(const std::vector<int> Data, const int StartIndex);
+int FindIndexOfSmallestElement(const std::vector<int> Data, const int StartIndex, const int EndIndex);
 void SwapArrayElements(std::vector<int>& Data, const int Index1, const int Index2);
 
 /* Basic sort functions */

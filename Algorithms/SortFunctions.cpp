@@ -26,7 +26,7 @@ void SelectionSort(std::vector<int>& Data)
     {
 
         // Hidden O(n^2) as we're also looping within the inner function
-        indexSmallestRemaining = FindIndexOfSmallestElement(Data, i + 1);
+        indexSmallestRemaining = FindIndexOfSmallestElement(Data, i + 1, Data.size() - 1);
     
         if(Data[indexSmallestRemaining] < Data[i])
         {
@@ -53,12 +53,12 @@ void BubbleSort(std::vector<int>& Data)
 
 }
 
-int FindIndexOfSmallestElement(const std::vector<int> Data, const int StartIndex)
+int FindIndexOfSmallestElement(const std::vector<int> Data, const int StartIndex, const int EndIndex)
 {
     int indexOfSmallest = StartIndex;
     
     int i;
-    for(i = StartIndex +1; i < Data.size(); i++)
+    for(i = StartIndex +1; i < EndIndex; i++)
     {
         if(Data[i] < Data[indexOfSmallest])
         {
