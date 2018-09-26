@@ -189,3 +189,5 @@ FakesAssemblies/
 # New ".vs" directory introduced by upgrading to VS 2017
 .vs/
 
+*/*.vcxproj.filters
+

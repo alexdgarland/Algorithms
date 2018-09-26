@@ -1,5 +1,5 @@
 #include "CppUnitTest.h"
-#include "..\Algorithms\SearchFunctions.h"
+#include "../../Algorithms/misc/SearchFunctions.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

@@ -78,24 +78,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BubbleSort.h" />
-    <ClInclude Include="HeapSort.h" />
-    <ClInclude Include="MaximumSubarray.h" />
-    <ClInclude Include="MergeSort.h" />
-    <ClInclude Include="SearchFunctions.h" />
-    <ClInclude Include="SortFunctions.h" />
+    <ClInclude Include="sort\BubbleSort.h" />
+    <ClInclude Include="sort\InsertionSort.h" />
+    <ClInclude Include="misc\MaximumSubarray.h" />
+    <ClInclude Include="sort\MergeSort.h" />
+    <ClInclude Include="misc\SearchFunctions.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="sort\VectorSorter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
-    <ClCompile Include="HeapSort.cpp" />
-    <ClCompile Include="MaximumSubarray.cpp" />
-    <ClCompile Include="MergeSort.cpp" />
-    <ClCompile Include="SearchFunctions.cpp" />
-    <ClCompile Include="SortFunctions.cpp" />
+    <ClCompile Include="sort\HeapSort.h" />
+    <ClCompile Include="misc\MaximumSubarray.cpp" />
+    <ClCompile Include="misc\SearchFunctions.cpp" />
+    <ClCompile Include="sort\SelectionSort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -86,13 +86,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Algorithms\*.h" />
+    <ClInclude Include="sort\SortTestHelpers.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Algorithms\*.cpp" />
-    <ClCompile Include="MaximumSubarray_Tests.cpp" />
-    <ClCompile Include="SearchFunctions_Tests.cpp" />
-    <ClCompile Include="SortFunctions_Tests.cpp" />
+    <ClCompile Include="..\Algorithms\**\*.cpp" />
+    <ClCompile Include="misc\MaximumSubarray_Tests.cpp" />
+    <ClCompile Include="misc\SearchFunctions_Tests.cpp" />
+    <ClCompile Include="sort\*.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,5 @@
 #include "CppUnitTest.h"
-#include "..\Algorithms\MaximumSubarray.h"
+#include "../../Algorithms/misc/MaximumSubarray.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

@@ -1,21 +1,16 @@
-#include <vector>
+#include "VectorSorter.h"
 
 #pragma once
-
-
-class VectorSorter {
-
-public:
-	virtual void operator()(std::vector<int>& Data) = 0;
-
-};
-
 
 class BubbleSorter : public VectorSorter {
 
 public:
 
-	void operator()(std::vector<int>& Data) {
+    string AlgorithmName() {
+        return "Bubble Sort";
+    }
+
+	void operator()(vector<int>& Data) {
 
 		int i, j;
 
@@ -25,7 +20,7 @@ public:
 			{
 				if (Data[j] < Data[j - 1])
 				{
-					std::swap(Data[j], Data[j - 1]);
+					swap(Data[j], Data[j - 1]);
 				}
 			}
 		}
