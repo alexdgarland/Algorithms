@@ -9,44 +9,49 @@
 #include "MergeSort.h"
 #include "HeapSort.h"
 
-constexpr auto ARRAYSIZE = 10;
+constexpr auto DATA_SIZE = 10;
 
-int* GetRandomArray(int ArraySize);
-void PrintArray(int* ArrayToPrint, const char* Message);
+std::vector<int> GetRandomData();
+void PrintData(std::vector<int> ArrayToPrint, const char* Message);
 void DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName);
 
-int* GetRandomArray(int ArraySize)
+std::vector<int> GetRandomData()
 {
-    int* array = (int*)malloc(ArraySize * sizeof(int));
-    int i;
+    std::vector<int> data(DATA_SIZE);
+    
     srand(time(NULL));
-    for(i = 0; i < ArraySize; array[i++] = rand()) { }
-    return array;
+
+    int i;
+    for(i = 0; i < DATA_SIZE; data[i++] = rand()) { }
+    
+    return data;
 }
 
-void PrintArray(int* ArrayToPrint, const char* Description)
+void PrintData(std::vector<int> Data, const char* Description)
 {
     printf("\nShowing %s:\n", Description);
 
     int i;
-    for (i = 0; i < ARRAYSIZE; i++) {
-        printf("%d ", ArrayToPrint[i]);
+    for (i = 0; i < Data.size(); i++) {
+        printf("%d ", Data[i]);
     }
     printf("\n");
 }
 
-void DemonstrateAlgorithm(void* ImplementationFunction, const char* AlgorithmName)
+void DemonstrateAlgorithm(void* Impl, const char* AlgorithmName)
 {
-    int* array = GetRandomArray(ARRAYSIZE);
-    int* (*currentSortFunction)(int*, int) = (int*(*)(int*, int))(ImplementationFunction);
+    std::vector<int> array = GetRandomData();
+    std::vector<int>(*currentSortFunction)(std::vector<int>, int) = (std::vector<int>(*)(std::vector<int>, int))(Impl);
 
     printf("\n**** Demonstrating sorting algorithm - %s ****\n", AlgorithmName);
-    PrintArray(array, "random array before sorting");
-    currentSortFunction(array, ARRAYSIZE);
-    PrintArray(array, "array after sorting");
+    PrintData(array, "random array before sorting");
+
+    currentSortFunction(array, DATA_SIZE);
+    
+    PrintData(array, "array after sorting");
     printf("\n");
 
-    free(array);
+
 }
 
 int _tmain(int argc, _TCHAR* argv[])

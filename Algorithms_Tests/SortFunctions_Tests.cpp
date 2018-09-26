@@ -1,18 +1,30 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
+#include <vector>
+#include <boost/assign/std/vector.hpp>
+// TODO - currently using a manual install of Boost - should maybe look at e.g. https://github.com/Microsoft/vcpkg
+// TODO - could also switch over to Boost unit tests?
+
 #include "..\Algorithms\SortFunctions.h"
 #include "..\Algorithms\MergeSort.h"
 #include "..\Algorithms\HeapSort.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace boost::assign;
 
 namespace SortingAlgorithms_Tests
 {
 
-    void assertSameIntArrays(int* expected, int* actual, int ArraySize) {
+    std::vector<int> VectorFrom(int array[]) {
+        return std::vector<int>(array, array + sizeof(array));
+    }
+
+    void assertSameIntVectors(std::vector<int> expected, std::vector<int> actual) {
+
+        Assert::AreEqual(expected.size(), actual.size());
 
         int i;
-        for (i = 0; i < ArraySize; i++)
+        for (i = 0; i < expected.size(); i++)
         {
             Assert::AreEqual(expected[i], actual[i]);
         }
@@ -26,14 +38,17 @@ namespace SortingAlgorithms_Tests
 
         void standardSortTest(void* SortFunctionPtr)
         {
-            int testArray[] = { 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682 };
-            int expectedArray[] = { 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976 };
+            std::vector<int> testVector;
+            testVector += 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682;
             
-            int*(*SortFunction)(int*, int) = (int*(*)(int*, int))(SortFunctionPtr);
+            std::vector<int> expectedVector;
+            expectedVector += 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976;
+            
+            std::vector<int>(*SortFunction)(std::vector<int>) = (std::vector<int>(*)(std::vector<int>))(SortFunctionPtr);
 
-            SortFunction(testArray, 10);
+            SortFunction(testVector);
 
-            assertSameIntArrays(expectedArray, testArray, 10);
+            assertSameIntVectors(expectedVector, testVector);
         }
 
     public:
@@ -48,9 +63,31 @@ namespace SortingAlgorithms_Tests
             this->standardSortTest(&SelectionSort);
         }
 
+        // TODO - generalise from this sorter class to something that can be passed cleanly into standard sort test
+        // TODO - see https://stackoverflow.com/questions/9756893/how-to-implement-interfaces-in-c
+        class BubbleSorter {
+
+        public:
+            void operator()(std::vector<int>& Data) {
+                BubbleSort(Data);
+            }
+
+        };
+
         TEST_METHOD(Test_BubbleSort)
         {
-            this->standardSortTest(&BubbleSort);
+            //this->standardSortTest(&BubbleSort);
+
+            std::vector<int> testVector;
+            testVector += 27976, 13779, 9340, 10777, 25894, 20028, 2681, 23739, 18613, 13682;
+
+            std::vector<int> expectedVector;
+            expectedVector += 2681, 9340, 10777, 13682, 13779, 18613, 20028, 23739, 25894, 27976;
+            BubbleSorter sort;
+            sort(testVector);
+
+            assertSameIntVectors(expectedVector, testVector);
+
         }
 
         TEST_METHOD(Test_MergeSort)
@@ -73,19 +110,22 @@ namespace SortingAlgorithms_Tests
 
         TEST_METHOD(Test_SwapArrayElements)
         {
-            int testArray[] = { 1, 2, 3 };
+            std::vector<int> testVector;
+            testVector += 1, 2, 3;
 
-            SwapArrayElements(testArray, 0, 2);
-
-            Assert::AreEqual(testArray[0], 3);  // Swappped
-            Assert::AreEqual(testArray[1], 2);  // Unchanged
-            Assert::AreEqual(testArray[2], 1);  // Swapped
+            SwapArrayElements(testVector, 0, 2);
+            
+            Assert::AreEqual(3, testVector[0]);  // Swappped
+            Assert::AreEqual(2, testVector[1]);  // Unchanged
+            Assert::AreEqual(1, testVector[2]);  // Swapped
         }
 
         TEST_METHOD(Test_FindIndexOfSmallestElement)
         {
-            int testArray[] = { 1, 4, 3, 4, 5, 1 };
-            int indexOfSmallest = FindIndexOfSmallestElement(testArray, 1, 4);
+            std::vector<int> testVector;
+            testVector += 1, 4, 3, 4, 5, 1;
+
+            int indexOfSmallest = FindIndexOfSmallestElement(testVector, 1);
 
             Assert::AreEqual(2, indexOfSmallest);
         }
@@ -97,12 +137,13 @@ namespace SortingAlgorithms_Tests
 
             MergeSortedSections(testArray, 6, 3);
 
-            assertSameIntArrays(expectedArray, testArray, 6);
+            assertSameIntVectors(VectorFrom(expectedArray), VectorFrom(testArray));
         }
 
         TEST_METHOD(Test_MaxHeapifySubtree)
         {
-            int testArray[] = { 1, 3, 5, 2, 4, 6 };
+            std::vector<int> testVector;
+            testVector += 1, 3, 5, 2, 4, 6;
             /*
                                     1
              Act here >>>   3               5
@@ -117,17 +158,19 @@ namespace SortingAlgorithms_Tests
                             4               5
                         2       3       6
             */
-            int expectedArray[] = { 1, 4, 5, 2, 3, 6 };
+            std::vector<int> expectedVector;
+            expectedVector += 1, 4, 5, 2, 3, 6;
 
-            MaxHeapify(testArray, 1, 6);
+            MaxHeapify(testVector, 1, 6);
             
-            assertSameIntArrays(expectedArray, testArray, 6);
+            assertSameIntVectors(expectedVector, testVector);
         
         }
 
         TEST_METHOD(Test_MaxHeapifyFullTree)
         {
-            int testArray[] = { 1, 4, 5, 2, 6, 3, 0};
+            std::vector<int> testVector;
+            testVector += 1, 4, 5, 2, 6, 3, 0;
             /*
                                     1
                             4               5
@@ -145,17 +188,19 @@ namespace SortingAlgorithms_Tests
                         2       6       1       0
 
             */
-            int expectedArray[] = { 5, 4, 3, 2, 6, 1, 0 };
+            std::vector<int> expectedVector;
+            expectedVector += 5, 4, 3, 2, 6, 1, 0;
+            
+            MaxHeapify(testVector, 0, 7);
 
-            MaxHeapify(testArray, 0, 7);
-
-            assertSameIntArrays(expectedArray, testArray, 7);
+            assertSameIntVectors(expectedVector, testVector);
         
         }
 
         TEST_METHOD(Test_BuildMaxHeap)
         {
-            int testArray[] = { 1, 4, 5, 2, 6, 3, 0 };
+            std::vector<int> testVector;
+            testVector += 1, 4, 5, 2, 6, 3, 0;
             /*
                                     1
                             4               5
@@ -171,11 +216,12 @@ namespace SortingAlgorithms_Tests
                         2       1       3       0
 
             */
-            int expectedArray[] = { 6, 4, 5, 2, 1, 3, 0 };
+            std::vector<int> expectedVector;
+            expectedVector += 6, 4, 5, 2, 1, 3, 0;
 
-            BuildMaxHeap(testArray, 7);
+            BuildMaxHeap(testVector);
 
-            assertSameIntArrays(expectedArray, testArray, 7);
+            assertSameIntVectors(expectedVector, testVector);
 
         }
 

@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "SortFunctions.h"
 #include "HeapSort.h"
 
@@ -10,43 +12,43 @@ rather than heap-style (1-based) which slightly impacts how some of the index ca
 
 */
 
-void MaxHeapify(int* ArrayToSort, int TopIndex, int HeapSize) {
+void MaxHeapify(std::vector<int>& Data, int TopIndex, int HeapSize) {
 
     int leftIndex = (2 * TopIndex) + 1;
     int rightIndex = leftIndex + 1;
 
     int maxIndex = TopIndex;
-    if (leftIndex < HeapSize && ArrayToSort[leftIndex] > ArrayToSort[maxIndex]) {
+    if (leftIndex < HeapSize && Data[leftIndex] > Data[maxIndex]) {
         maxIndex = leftIndex;
     }
-    if (rightIndex < HeapSize && ArrayToSort[rightIndex] > ArrayToSort[maxIndex]) {
+    if (rightIndex < HeapSize && Data[rightIndex] > Data[maxIndex]) {
         maxIndex = rightIndex;
     }
 
     if (maxIndex != TopIndex) {
-        SwapArrayElements(ArrayToSort, TopIndex, maxIndex);
-        MaxHeapify(ArrayToSort, maxIndex, HeapSize);
+        SwapArrayElements(Data, TopIndex, maxIndex);
+        MaxHeapify(Data, maxIndex, HeapSize);
     }
 
 };
 
-void BuildMaxHeap(int* ArrayToSort, int ArraySize) {
+void BuildMaxHeap(std::vector<int>& Data) {
     
     int i;
-    for (i = ((ArraySize -1) / 2); i >= 0; i--) {
-        MaxHeapify(ArrayToSort, i, ArraySize);
+    for (i = ((Data.size() -1) / 2); i >= 0; i--) {
+        MaxHeapify(Data, i, Data.size());
     }
 
 };
 
-void HeapSort(int* ArrayToSort, int ArraySize) {
+void HeapSort(std::vector<int>& Data) {
     
-    BuildMaxHeap(ArrayToSort, ArraySize);
+    BuildMaxHeap(Data);
 
     int i;
-    for (i = ArraySize - 1; i > 0; i--) {
-        SwapArrayElements(ArrayToSort, 0, i);
-        MaxHeapify(ArrayToSort, 0, i);
+    for (i = Data.size() - 1; i > 0; i--) {
+        SwapArrayElements(Data, 0, i);
+        MaxHeapify(Data, 0, i);
     }
 
 };

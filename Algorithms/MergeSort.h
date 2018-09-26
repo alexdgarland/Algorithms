@@ -1,4 +1,7 @@
+#include <vector>
+
 #pragma once
 
-int* MergeSort(int* ArrayToSort, int ArraySize);
-int* MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint);
+void MergeSort(std::vector<int> Data);
+void InnerMergeSort(int* Data, int DataSize);
+void MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint);

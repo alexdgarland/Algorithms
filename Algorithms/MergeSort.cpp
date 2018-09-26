@@ -1,22 +1,29 @@
 #include <stdlib.h>
 #include "MergeSort.h"
 
-int* MergeSort(int* ArrayToSort, int ArraySize)
+void MergeSort(std::vector<int> Data)
 {
-    if (ArraySize > 1)  // If ArraySize is 1, do nothing... single element cannot be out of order
-    {
-        int splitPoint = ArraySize / 2;
-        /* Recursive merge sort of each half */
-        MergeSort(ArrayToSort, splitPoint);
-        MergeSort(ArrayToSort + splitPoint, ArraySize - splitPoint);
-        /* Merge sorted parts using separate helper function */
-        MergeSortedSections(ArrayToSort, ArraySize, splitPoint);
-    }
-
-    return ArrayToSort;
+    InnerMergeSort(Data.data(), Data.size());
 }
 
-int* MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint)
+// TODO - basically just wrapping an array implementation with a thin layer that uses a vector for consistency with other algos
+// TODO - need to switch over to using a vector for the actual impl when I have time
+
+void InnerMergeSort(int* Data, int DataSize)
+{
+    if (DataSize > 1)  // If DataSize is 1, do nothing... single element cannot be out of order
+    {
+        int splitPoint = DataSize / 2;
+        /* Recursive merge sort of each half */
+        InnerMergeSort(Data, splitPoint);
+        InnerMergeSort(Data + splitPoint, DataSize - splitPoint);
+        /* Merge sorted parts using separate helper function */
+        MergeSortedSections(Data, DataSize, splitPoint);
+    }
+
+}
+
+void MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint)
 {
     int i, leftIndex = 0, rightIndex = 0;
 
@@ -62,5 +69,4 @@ int* MergeSortedSections(int* ArrayToSort, int ArraySize, int SplitPoint)
     free(leftSection);
     free(rightSection);
 
-    return ArrayToSort;
 }

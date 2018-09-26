@@ -1,71 +1,76 @@
 #include <stdlib.h>
+#include <vector>
+
 #include "SortFunctions.h"
 
- int* InsertionSort(int* ArrayToSort, int ArraySize)
+void InsertionSort(std::vector<int>& Data)
 {
     int i, j;
     
-    for (i = 1; i < ArraySize; i++)
+    for (i = 1; i < Data.size(); i++)
     {
-        for(j = i; j > 0 && ArrayToSort[j] < ArrayToSort[j-1]; j--)
+        for(j = i; j > 0 && Data[j] < Data[j-1]; j--)
         {
-            SwapArrayElements(ArrayToSort, j, j-1);
+            SwapArrayElements(Data, j, j-1);
         }
     }
 
-    return ArrayToSort;
 }
 
-int* SelectionSort(int* ArrayToSort, int ArraySize)
+void SelectionSort(std::vector<int>& Data)
 {
+
     int i, indexSmallestRemaining;
-    for(i=0; i<(ArraySize-1); i++)
+    
+    for(i = 0; i < (Data.size() -1); i++)
     {
+
         // Hidden O(n^2) as we're also looping within the inner function
-        indexSmallestRemaining = FindIndexOfSmallestElement(ArrayToSort, i+1, ArraySize-1);
-        if(ArrayToSort[indexSmallestRemaining] < ArrayToSort[i])
+        indexSmallestRemaining = FindIndexOfSmallestElement(Data, i + 1);
+    
+        if(Data[indexSmallestRemaining] < Data[i])
         {
-            SwapArrayElements(ArrayToSort, indexSmallestRemaining, i);
+            SwapArrayElements(Data, indexSmallestRemaining, i);
         }
     }
-    return ArrayToSort;
+
 };
 
-int* BubbleSort(int* ArrayToSort, int ArraySize)
+void BubbleSort(std::vector<int>& Data)
 {
     int i, j;
 
-    for(i=0; i<(ArraySize-1); i++)
+    for(i = 0; i < (Data.size() - 1); i++)
     {
-        for(j=(ArraySize-1); j>i; j--)
+        for(j = (Data.size() - 1); j > i; j--)
         {
-            if(ArrayToSort[j] < ArrayToSort[j-1])
+            if(Data[j] < Data[j-1])
             {
-                SwapArrayElements(ArrayToSort, j, j-1);
+                std::swap(Data[j], Data[j-1]);
             }
         }
     }
-    return ArrayToSort;
+
 }
 
-int FindIndexOfSmallestElement(const int* Array, const int StartIndex, const int EndIndex)
+int FindIndexOfSmallestElement(const std::vector<int> Data, const int StartIndex)
 {
-    int indexSmallestValue = StartIndex;
+    int indexOfSmallest = StartIndex;
+    
     int i;
-    for(i = StartIndex +1; i <= EndIndex; i++)
+    for(i = StartIndex +1; i < Data.size(); i++)
     {
-        if(Array[i] < Array[indexSmallestValue])
+        if(Data[i] < Data[indexOfSmallest])
         {
-            indexSmallestValue = i;
+            indexOfSmallest = i;
         }
     }
-    return indexSmallestValue;
+
+    return indexOfSmallest;
 }
 
-int* SwapArrayElements(int* ArrayToChange, int ElemIndex1, int ElemIndex2)
+void SwapArrayElements(std::vector<int>& Data, const int Index1, const int Index2)
 {
-    int temp = ArrayToChange[ElemIndex1];
-    ArrayToChange[ElemIndex1] = ArrayToChange[ElemIndex2];
-    ArrayToChange[ElemIndex2] = temp;
-    return ArrayToChange;
+    // TODO - this is now so trivial no point maintaining a separate function
+    std::swap(Data[Index1], Data[Index2]);
 }
