@@ -1,4 +1,4 @@
-AlgunosRitmos
+Algorithms
 =============
 
 Messing around with standard algorithms in C++.
