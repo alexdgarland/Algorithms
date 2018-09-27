@@ -90,9 +90,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Algorithms\**\*.cpp" />
-    <ClCompile Include="misc\MaximumSubarray_Tests.cpp" />
-    <ClCompile Include="misc\SearchFunctions_Tests.cpp" />
+    <ClCompile Include="..\Algorithms\search\SearchFunctions.cpp" />
+    <ClCompile Include="search\SearchFunctions_Tests.cpp" />
     <ClCompile Include="sort\*.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

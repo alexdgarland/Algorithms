@@ -1,6 +1,6 @@
 #include "CppUnitTest.h"
 #include <boost/assign/std/vector.hpp>
-#include "../../Algorithms/misc/SearchFunctions.h"
+#include "../../Algorithms/search/SearchFunctions.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace boost::assign;
