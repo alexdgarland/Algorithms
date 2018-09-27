@@ -1,4 +1,9 @@
+#include <vector>
+
+using namespace std;
+
 #pragma once
 
-int LinearSearch(const int* ArrayToSearch, const int Length, const int ItemToFind);
-int BinarySearch(const int* SortedArrayToSearch, const int Length, const int ItemToFind);
+int LinearSearch(const vector<int> Data, const int ItemToFind);
+int BinarySearch(const vector<int> Data, const int ItemToFind);
+int BinarySearch(const vector<int> Data, const int ItemToFind, const int Start, const int End);

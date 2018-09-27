@@ -1,35 +1,45 @@
 #include "SearchFunctions.h"
 
-int LinearSearch(const int* ArrayToSearch, const int Length, const int ItemToFind)
+int LinearSearch(const vector<int> Data, const int ItemToFind)
 {
     int i;
-    for (i = 0; i < Length; i++)
+
+    for (i = 0; i < Data.size(); i++)
     {
-        if (ArrayToSearch[i] == ItemToFind) { return i; }
+        if (Data[i] == ItemToFind) {
+            return i;
+        }
     }
+
     return -1;
 }
 
-int BinarySearch(const int* SortedArrayToSearch, const int Length, const int ItemToFind)
+int BinarySearch(const vector<int> Data, const int ItemToFind) {
+
+    return BinarySearch(Data, ItemToFind, 0, Data.size() -1);
+
+}
+
+int BinarySearch(const vector<int> Data, const int ItemToFind, const int Start, const int End)
 {
-    int midPoint, midPointValue;
 
-    if (Length == 1) { return SortedArrayToSearch[0] == ItemToFind ? 0 : -1; }
+    if (End < Start) {
+        return -1;
+    }
 
-    midPoint = Length / 2;
-    midPointValue = SortedArrayToSearch[midPoint];
+    int midPoint = Start + ((End - Start) / 2);
 
-    if (midPointValue == ItemToFind)
+    if (Data[midPoint] == ItemToFind)
     {
         return midPoint;
     }
-    else if (midPointValue > ItemToFind)
+    else if (Data[midPoint] > ItemToFind)
     {
-        return BinarySearch(SortedArrayToSearch, midPoint, ItemToFind);
+        return BinarySearch(Data, ItemToFind, 0, midPoint -1);
     }
-    else /* Implicitly ...  midPointValue < ItemToFind */
+    else
     {
-        int recursiveResult = BinarySearch(&(SortedArrayToSearch[midPoint + 1]), Length - (midPoint + 1), ItemToFind);
-        return  (recursiveResult < 0) ? recursiveResult : (recursiveResult + midPoint + 1);
+        return BinarySearch(Data, ItemToFind, midPoint + 1, End);
     }
+
 }
